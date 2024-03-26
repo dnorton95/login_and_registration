@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body class="quicksand p-2 pt-5">
+    <div class="neg-mt-3 d-flex-center d-flex-column">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                            {% if messages %}                            <!-- check if there are any messages -->
+                                {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paramraph tag -->
+                                {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </div>
+    <div class="small-d-flex-column d-flex-around push-in">
+        <div class="d-flex-center d-flex-column">
+            <form class="p-2 border d-flex-center d-flex-column" action="/register" method="POST">
+                <h2 class="neg-mt-1">Register:</h2>
+                <label for="first_name">First Name:</label>
+                <input class="input-shade border" type="text" id="first_name" name="first_name">
+                <label class="mt-1" for="last_name">Last Name:</label>
+                <input class="input-shade border" type="text" id="last_name" name="last_name">
+                <label class="mt-1" for="email">Email:</label>
+                <input class="input-shade border" type="text" id="email" name="email">
+                <label class="mt-1" for="password">Password:</label>
+                <input class="input-shade border" type="password" id="password" name="password">
+                <label class="gt-1" for="confirm_password">Confirm Password:</label>
+                <input class="input-shade border" type="password" id="confirm_password" name="confirm_password">
+                <label class="mt-1" for="birthday">Birthday:</label>
+                <input class="p-1 fc-white input-shade border" type="date" id="birthday" name="birthday">
+                <label class="mt-1" for="gender">Gender:</label>
+                <select class="border fc-white input-shade border" id="gender" name="gender">
+                    <option value="" disabled selected aria-placeholder="true">Select gender..</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Nonbinary">Nonbinary</option>
+                    <option value="Gender Fluid">Gender Fluid</option>
+                    <option value="Other">Other</option>
+                    <option value="Decline to Self Identify">Decline to Self Identify</option>
+                </select>
+
+                <label class="mt-1" for="race">Race:</label>
+                <select class="fc-white input-shade border" id="race" name="race">
+                    <option value="" disabled selected aria-placeholder="true">Select race..</option>
+                    <option value="Caucasian">Caucasian</option>
+                    <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                    <option value="African American">African American</option>
+                    <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Two or More Races">Two or More Races</option>
+                    <option value="Hispanic">Hispanic</option>
+                    <option value="Decline to Self Identify">Decline to Self Identify</option>
+                    
+                    <!-- Add more options as needed -->
+                </select>
+                <label class="mt-1" for="usa">Do You Currently Reside in the USA?:</label><br>
+                <div class="d-flex-center">
+                    <input type="radio" id="usa_yes" name="usa" value="Yes">
+                    <label class="mr-1" for="usa_yes">Yes</label><br>
+                    <input class="ml-1" type="radio" id="usa_no" name="usa" value="No">
+                    <label for="usa_no">No</label><br>
+                </div>
+                <input class="grow-small submit mt-1" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="d-flex-column d-flex-center">
+            <form class="p-3 border d-flex-column d-flex-center" action="/login" method="POST">
+                <h2 class="neg-mt-1">Log In:</h2>
+                <label for="email">Email:</label>
+                <input class="input-shade border" type="text" id="email" name="email">
+                <label for="password">Password:</label>
+                <input class="input-shade border" type="password" id="password" name="password">
+                <input class="grow-small mt-1 submit" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

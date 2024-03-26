@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="quicksand p-4">
+    <div class="mt-2 border p-3 d-flex-center d-flex-column">
+        <h2>Welcome {{ first_name }} {{ last_name }}</h2>
+        <a class="p-1 border2" href="/clear_session">Log out</a> <!-- Logout button -->
+    </div>
+    <div class="mt-3 d-flex-center d-flex-column mr-5 ml-5 p-2 border">
+        <h3 class="neg-mb-1">User Information:</h3>
+        <ul>
+            <li>Email: {{ email }}</li>
+            <li>Gender: {{ gender }}</li>
+            <li>Birthday: {{ birthday }}</li>
+            <li>Race: {{ race }}</li>
+            <li>US Citizen?: {{ usa }}</li>
+        </ul>
+    </div>
+</body>
+</html>
